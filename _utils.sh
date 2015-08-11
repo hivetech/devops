@@ -4,7 +4,7 @@
 
 log () {
   local msg="$1"
-  printf "\r\033[00;36m  [ \033[00;34m..\033[00;36m ] $(date -u) - ${msg}\033[0m\n"
+  printf "\r\033[00;36m  [ \033[00;34m..\033[00;36m ] $(date +%T) - ${msg}\033[0m\n"
 }
 
 # "s" stands for smart_log, but for lazy developers
@@ -16,12 +16,12 @@ slog () {
 
 success () {
   local msg="$1"
-  printf "\r\033[00;36m  [ \033[00;32mOK\033[00;36m ] $(date -u) - ${1}\033[0m\n"
+  printf "\r\033[00;36m  [ \033[00;32mOK\033[00;36m ] $(date +%T) - ${1}\033[0m\n"
 }
 
 fail () {
   local msg="$1"
-  printf "\r\033[00;36m  [\033[00;31mFAIL\033[00;36m] $(date -u) - ${msg}\033[0m\n\n"
+  printf "\r\033[00;36m  [\033[00;31mFAIL\033[00;36m] $(date +%T) - ${msg}\033[0m\n\n"
 }
 
 # FIXME Kill the session on Mac OSX
@@ -40,9 +40,17 @@ is_installed () {
 mesos_doctor () {
   # TODO exit on fail
   is_installed "docker" || fail "you need docker to be installed"
-  [ "$(docker ps > /dev/null)" -eq "0" ] || fail "unable to contact docker daemon"
+  [[ "$(docker ps > /dev/null)" -eq "0" ]] || fail "unable to contact docker daemon"
+}
+
+docker_id() {
+  local container="$1"
+  local cid=$(docker inspect -f '{{ .Id }}' ${container})
+  echo ${cid}
 }
 
 component_run() {
-  docker run -d --restart always ${@}
+  local container="$1"
+  cid=$([[ -n $(docker_id ${container}) ]] || docker run -d --restart always --name ${@})
+  echo $(docker_id ${container})
 }
