@@ -1,0 +1,16 @@
+{
+  "id": "web-3.4",
+  "cmd": "python -m SimpleHTTPServer",
+  "cpus": 0.5,
+  "mem": 32.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "python:2.7",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 0 }
+      ]
+    }
+  }
+}

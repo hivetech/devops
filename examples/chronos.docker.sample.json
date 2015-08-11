@@ -1,0 +1,13 @@
+{
+ "schedule": "R//PT2M",
+ "name": "dockerjob",
+ "container": {
+  "type": "DOCKER",
+  "image": "libmesos/ubuntu",
+  "forcePullImage": true
+ },
+ "cpus": "0.5",
+ "mem": "512",
+ "uris": [],
+ "command": "while sleep 10; do date =u %T; done"
+}

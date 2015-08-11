@@ -1,0 +1,9 @@
+
+{
+  "schedule": "R10//PT2S",
+  "name": "sample_job",
+  "epsilon": "PT15M",
+  "command": "echo 'FOO' >> /tmp/JOB1_OUT",
+  "owner": "bob@airbnb.com",
+  "async": false
+}
