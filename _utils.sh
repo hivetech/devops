@@ -49,8 +49,11 @@ docker_id() {
   echo ${cid}
 }
 
+# TODO remove output: "Error: No such image or container: marathon"
 component_run() {
   local container="$1"
-  cid=$([[ -n $(docker_id ${container}) ]] || docker run -d --restart always --name ${@})
+  # FIXME it won't run containers that are stopped. Check {{ State.Running }}
+  local previous_cid=$(docker_id ${container})
+  local cid=$([[ -n "${previous_cid}" ]] || docker run -d --restart always --name ${@})
   echo $(docker_id ${container})
 }
