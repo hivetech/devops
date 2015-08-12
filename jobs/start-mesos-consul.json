@@ -6,7 +6,8 @@
     "type": "DOCKER",
     "docker": {
       "network": "BRIDGE",
-      "image": "hivetech/mesos-consul:latest"
+      "image": "ciscocloud/mesos-consul:latest",
+      "forcePullImage": true
     }
   },
   "id": "mesos-consul",

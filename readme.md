@@ -66,13 +66,15 @@ __Chronos__
 
 ```sh
 curl 192.168.99.100:4400/scheduler/jobs
-curl -L -H 'Content-Type: application/json' -X POST -d @examples/chronos.sample.json 192.168.99.100:4400/scheduler/iso8601
+curl -L -H 'Content-Type: application/json' -X POST -d @jobs/chronos.sample.json 192.168.99.100:4400/scheduler/iso8601
+# inside docker
+curl -L -H 'Content-Type: application/json' -X POST -d @jobs/chronos.docker.sample.json 192.168.99.100:31362/scheduler/iso8601
 ```
 
 __Marathon__
 
 ```sh
-curl -X POST http://192.168.99.100:8080/v2/apps -d @examples/marathon.docker.web.json -H "Content-type: application/json"
+curl -X POST http://192.168.99.100:8080/v2/apps -d @jobs/marathon.docker.web.json -H "Content-type: application/json"
 ```
 
 ```python

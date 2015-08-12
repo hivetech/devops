@@ -6,8 +6,8 @@
   "image": "libmesos/ubuntu",
   "forcePullImage": true
  },
- "cpus": "0.5",
- "mem": "512",
+ "cpus": "0.2",
+ "mem": "32.0",
  "uris": [],
  "command": "while sleep 10; do date =u %T; done"
 }
