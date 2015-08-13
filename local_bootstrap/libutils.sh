@@ -43,17 +43,28 @@ mesos_doctor () {
   [[ "$(docker ps > /dev/null)" -eq "0" ]] || fail "unable to contact docker daemon"
 }
 
-docker_id() {
+docker_id () {
   local container="$1"
   local cid=$(docker inspect -f '{{ .Id }}' ${container})
   echo ${cid}
 }
 
 # TODO remove output: "Error: No such image or container: marathon"
-component_run() {
+component_run () {
   local container="$1"
   # FIXME it won't run containers that are stopped. Check {{ State.Running }}
   local previous_cid=$(docker_id ${container})
   local cid=$([[ -n "${previous_cid}" ]] || docker run -d --restart always --name ${@})
   echo $(docker_id ${container})
+}
+
+component_ip () {
+  local container="$1"
+  echo "$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${container})"
+}
+
+build_component() {
+  local namespace=$1
+  local name=$2
+  docker buil --rm -t ${namespace}/${name} -f ${name}.Dockerfile .
 }
