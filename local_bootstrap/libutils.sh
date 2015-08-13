@@ -36,11 +36,16 @@ is_installed () {
   [ "$?" -eq "0" ]
 }
 
+require () {
+  local program="$1"
+  is_installed "docker-machine" && printf "\t✓ found ${program}\n" || die "${program} is required"
+}
+
 # TODO generic functions with program array and a for loop
 mesos_doctor () {
-  # TODO exit on fail
-  is_installed "docker" || fail "you need docker to be installed"
-  [[ "$(docker ps > /dev/null)" -eq "0" ]] || fail "unable to contact docker daemon"
+  require "docker"
+  [[ "$(docker ps > /dev/null)" -eq "0" ]] || die "unable to contact docker daemon"
+  require "docker-machine"
 }
 
 docker_id () {
@@ -63,8 +68,15 @@ component_ip () {
   echo "$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${container})"
 }
 
-build_component() {
+build_component () {
   local namespace=$1
   local name=$2
-  docker buil --rm -t ${namespace}/${name} -f ${name}.Dockerfile .
+  log "\t--> building ${namespace}/${name}"
+  docker build --rm -t ${namespace}/${name} -f ${name}.Dockerfile .
+}
+
+remove_component () {
+  local container=$1
+  feedback=$(docker stop --timeout 30 ${container} >/dev/null 2>&1  && docker rm --volumes ${container})
+  [[ $? -eq 0 ]] && success "destroyed ${feedback} container ..."
 }

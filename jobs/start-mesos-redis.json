@@ -1,0 +1,16 @@
+{
+  "id": "redis",
+  "cpus": 0.1,
+  "mem": 32.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "redis:3.0.3",
+      "network": "BRIDGE",
+      "forcePullImage": true,
+      "portMappings": [
+        { "containerPort": 6379, "hostPort": 0, "servicePort": 6379, "protocol": "tcp" }
+      ]
+    }
+  }
+}

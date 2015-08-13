@@ -1,0 +1,14 @@
+{
+  "id": "mongodb",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "mongo:3.0.4",
+      "network": "BRIDGE",
+      "forcePullImage": true,
+      "portMappings": [
+        { "containerPort": 27018, "hostPort": 0, "servicePort": 27018, "protocol": "tcp" }
+      ]
+    }
+  }
+}

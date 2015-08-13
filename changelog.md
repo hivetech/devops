@@ -8,9 +8,5 @@ All notable changes to this project will be documented in this file, following [
 ### Added
 - components Dockerfile
 - bootstrap script and bash sugar
-- job examples
+- marathon and chronos job examples
 - basic readme instructions
-
-### Changed
-
-### Deleted
