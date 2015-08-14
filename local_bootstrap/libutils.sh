@@ -32,8 +32,8 @@ die() {
 
 is_installed () {
   #dpkg -s "$1" >/dev/null 2>&1
-  command -v $1 > /dev/null
-  [ "$?" -eq "0" ]
+  command -v $1 >/dev/null 2>&1
+  #[ "$?" -eq "0" ]
 }
 
 require () {
@@ -50,7 +50,7 @@ mesos_doctor () {
 
 docker_id () {
   local container="$1"
-  local cid=$(docker inspect -f '{{ .Id }}' ${container})
+  local cid=$(docker inspect -f '{{ .Id }}' ${container} 2> /dev/null)
   echo ${cid}
 }
 
@@ -59,7 +59,9 @@ component_run () {
   local container="$1"
   # FIXME it won't run containers that are stopped. Check {{ State.Running }}
   local previous_cid=$(docker_id ${container})
-  local cid=$([[ -n "${previous_cid}" ]] || docker run -d --restart always --name ${@})
+  local cid=$([[ -n "${previous_cid}" ]] || docker run \
+    -d --restart always \
+    --name ${@})
   echo $(docker_id ${container})
 }
 
@@ -77,6 +79,6 @@ build_component () {
 
 remove_component () {
   local container=$1
-  feedback=$(docker stop --timeout 30 ${container} >/dev/null 2>&1  && docker rm --volumes ${container})
+  feedback=$(docker stop ${container} >/dev/null 2>&1  && docker rm --volumes ${container})
   [[ $? -eq 0 ]] && success "destroyed ${feedback} container ..."
 }

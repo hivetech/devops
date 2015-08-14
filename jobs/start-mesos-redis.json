@@ -10,6 +10,10 @@
       "forcePullImage": true,
       "portMappings": [
         { "containerPort": 6379, "hostPort": 0, "servicePort": 6379, "protocol": "tcp" }
+      ],
+      "parameters": [
+         { "key": "log-driver", "value": "gelf" },
+         { "key": "log-opt", "value": "gelf-address=udp://192.168.99.100:12201" }
       ]
     }
   }

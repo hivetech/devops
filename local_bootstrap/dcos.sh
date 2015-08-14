@@ -2,15 +2,12 @@
 # encoding: utf-8
 # Mesos cluster bootstraper. Copyright (c) 2015, Xavier Bruhiere
 
-# TODO cli : commands, usage, ...
-# TODO build images
-# TODO fail on bad commands
-
+# NOTE ./dcos start --with chronos,graylog ?
 
 usage () {
   printf "\nUsage: $0 <command> [<job>]\n"
   printf "\t<command>\tmanage the cluster : build|start|teardown|schedule\n"
-  printf "\t<job>\tjob to run with marathon\n"
+  printf "\t<schedule>\tjob to run with marathon\n"
   printf "\n"
   exit 11
 }
@@ -78,8 +75,10 @@ case $1 in
 
   "teardown" )
     # TODO remove marathon and chronos jobs as well
+    # FIXME don't silentely crash when unable to find containers
     remove_component "marathon"
-    remove_component "worker-2"
+    remove_component "worker-1"
+    remove_component "zk"
     remove_component "master"
     ;;
 

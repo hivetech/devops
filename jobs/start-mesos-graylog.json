@@ -1,0 +1,17 @@
+{
+  "id": "graylog",
+  "cpus": 0.5,
+  "mem": 256.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "graylog2/allinone:latest",
+      "network": "BRIDGE",
+      "forcePullImage": true,
+      "portMappings": [
+        { "containerPort": 9000, "hostPort": 0, "servicePort": 9000, "protocol": "tcp" },
+        { "containerPort": 12201, "hostPort": 0, "servicePort": 12201, "protocol": "udp" }
+      ]
+    }
+  }
+}
