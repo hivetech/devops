@@ -6,7 +6,11 @@ all: containers images
 containers:
 	./local_bootstrap/dcos.sh build
 
-images:
-	packer build images/slave-node-droplet.json
+image.mesos.slave:
+	package validate infrastructure/machines/slave-node-droplet.json
+	packer build infrastructure/machines/slave-node-droplet.json
+
+images: image.mesos.slave
+	@echo "done building images !"
 
 .PHONY: containers images

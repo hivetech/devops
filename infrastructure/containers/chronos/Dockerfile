@@ -6,7 +6,7 @@ RUN yum install -y \
   chronos-2.3.4-1.0.81.el7.x86_64 && \
   rm -rf /etc/mesos /etc/chronos/conf
 
-COPY start-chronos.sh /tmp/
+COPY cmd.sh /tmp/
 EXPOSE 4400
 
-CMD ["/tmp/start-chronos.sh"]
+CMD ["/tmp/cmd.sh"]

@@ -24,7 +24,9 @@
         "DOCKER_VERSION={{user `docker_version`}}"
       ],
       "scripts": [
-        "scripts/bootstrap-mesos-slave.sh"
+        "scripts/bootstrap.sh",
+        "scripts/install-docker.sh",
+        "scripts/install-mesos-slave.sh"
       ]
     }
   ]

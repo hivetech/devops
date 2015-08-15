@@ -1,3 +1,6 @@
+# local temporary hacks
+_*
+
 # secrets
 .env
 
