@@ -1,9 +1,19 @@
 # Mesos Deployment Prototype
 
+| container             | status        |
+| --------------------- |:-------------:|
+| hivetech/mesos.master | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/mesos.master/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/mesos.master) |
+| hivetech/marathon     | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/marathon/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/marathon) |
+| hivetech/chronos      | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/chronos/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/chronos) |
+
 ## Credits
 
 - [Capgemini apollo][1]
 - [Mesoscloud][2]
+
+## Notes
+
+- [Infra conf powered by consul](https://www.terraform.io/intro/examples/consul.html)
 
 ## Workflow
 
@@ -17,7 +27,15 @@
 
 ## Install (Mac OSX)
 
-[Docker][4] 1.8 is required and I advise to use [Docker toolbox][3].
+- [Docker][4] 1.8 is required and I advise to use [Docker toolbox][3].
+- [Digital Ocean][5] is also required, with an ssh key associated :
+
+```sh
+# name it bot_id_rsa
+ssh-keygen -t rsa
+```
+
+- [Hashicorp tools][6]
 
 ```sh
 # infrastructure management
@@ -63,3 +81,5 @@ brew install packer
 [2]: https://github.com/mesoscloud
 [3]: https://www.docker.com/toolbox
 [4]: https://www.docker.com/
+[5]: https://digitalocean.com
+[6]: https://hashicorp.com
