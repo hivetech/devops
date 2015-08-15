@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file, following [
 
 ---
 
+## [0.1.2] - 2015-08-15
+### Added
+- DigitalOcean mesos slave droplet template for packer
+- Makefile
+
+### Changed
+- nice ui for bootstrap script
+
+---
+
 ## [0.1.1] - 2015-08-12
 ### Added
 - components Dockerfile
