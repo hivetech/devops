@@ -28,7 +28,7 @@ mesos_init () {
   #-v /sys/fs/cgroup:/sys/fs/cgroup \
   #-p 5051:5051 \
   #-p 31000-31050:31000-31050 \
-  local ms_id=$(component_run worker-2 \
+  local ms_id=$(component_run worker-1 \
     -e MESOS_MASTER=zk://$ZK_IP:2181/mesos \
     -e MESOS_CONTAINERIZERS=docker,mesos \
     -e MESOS_EXECUTOR_REGISTRATION_TIMEOUT=5mins \

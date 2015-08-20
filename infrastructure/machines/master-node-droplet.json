@@ -3,14 +3,16 @@
     "digitalocean_api_token": "{{env `DIGITALOCEAN_API_TOKEN`}}",
     "digitalocean_region": "{{env `DIGITALOCEAN_REGION`}}",
     "digitalocean_size": "{{env `DIGITALOCEAN_SIZE`}}",
-    "digitalocean_image": "centos-7-0-x64",
-    "mesos_version": "0.23.0-1.0",
-    "docker_version": "1.8.1-1"
+    "digitalocean_image": "docker",
+    "zk_version": "3.4.6",
+    "mesos_master_version": "cloud",
+    "marathon_version": "cloud",
+    "chronos_version": "cloud"
   },
   "builders": [
     {
       "type": "digitalocean",
-      "snapshot_name": "mesos-slave-{{user `digitalocean_image`}}-{{ timestamp }}",
+      "snapshot_name": "mesos-master-{{user `digitalocean_image`}}-{{ timestamp }}",
       "api_token": "{{ user `digitalocean_api_token` }}",
       "image": "{{user `digitalocean_image`}}",
       "region": "{{user `digitalocean_region`}}",
@@ -22,13 +24,13 @@
     {
       "type": "shell",
       "environment_vars": [
-        "MESOS_VERSION={{user `mesos_version`}}",
-        "DOCKER_VERSION={{user `docker_version`}}"
+        "ZK_VERSION={{user `zk_version`}}",
+        "MESOS_MASTER_VERSION={{user `mesos_master_version`}}",
+        "MARATHON_VERSION={{user `marathon_version`}}",
+        "CHRONOS_VERSION={{user `chronos_version`}}"
       ],
       "scripts": [
-        "scripts/bootstrap.sh",
-        "scripts/install-docker.sh",
-        "scripts/install-mesos-slave.sh"
+        "scripts/init-master.sh"
       ]
     }
   ]

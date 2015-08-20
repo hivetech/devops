@@ -5,6 +5,11 @@ variable "key_name" {
 
 variable "key_file" {
   description = "The ssh public key path for using with the cloud provider."
+  default = "~/.ssh/id_rsa.pub"
+}
+
+variable "pvt_key_file" {
+  description = "The ssh private key path for droplet connection."
   default = "~/.ssh/id_rsa"
 }
 
@@ -36,7 +41,7 @@ variable "instance_size" {
 variable "packer_artifact" {
   description = "machine images to deploy."
   default = {
-    master = "docker"
-    slave  = "mesos-slave-centos-7-0-x64-1439628361"
+    master = "13153418"
+    slave  = "13153498"
   }
 }

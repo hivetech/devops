@@ -1,4 +1,5 @@
 FROM centos:7
+MAINTAINER Xavier Bruhiere <xavier.bruhiere@gmail.com>
 
 ENV USER root
 ENV DOCKER_VERSION 1.6.2
@@ -15,4 +16,5 @@ RUN echo 'docker,mesos' > /etc/mesos-slave/containerizers && \
 
 EXPOSE 5051
 
-CMD ["mesos-slave", "--ip=0.0.0.0", "--work_dir=/var/lib/mesos/slave", "--log_dir=/var/log/mesos/slave"]
+#CMD ["mesos-slave", "--ip=0.0.0.0", "--work_dir=/var/lib/mesos/slave", "--log_dir=/var/log/mesos/slave"]
+CMD ["mesos-slave", "--work_dir=/var/lib/mesos/slave", "--log_dir=/var/log/mesos/slave"]

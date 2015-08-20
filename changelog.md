@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file, following [
 - DigitalOcean mesos slave droplet template for packer
 - Makefile
 - basic droplet creation with terraform
+- mesos-slave and master droplets
 
 ### Changed
 - nice ui for bootstrap script

@@ -13,4 +13,7 @@ image.mesos.slave:
 images: image.mesos.slave
 	@echo "done building images !"
 
+cluster:
+		cd infrastructure/cluster && terraform apply -var-file terraform.tfvars
+
 .PHONY: containers images

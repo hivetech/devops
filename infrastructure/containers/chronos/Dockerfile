@@ -1,4 +1,5 @@
 FROM centos:7
+MAINTAINER Xavier Bruhiere <xavier.bruhiere@gmail.com>
 
 RUN rpm -Uvh http://repos.mesosphere.com/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
 RUN yum install -y \
