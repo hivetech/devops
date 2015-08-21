@@ -5,11 +5,10 @@ FROM centos:7
 MAINTAINER Xavier Bruhiere <xavier.bruhiere@gmail.com>
 
 RUN rpm -Uvh http://repos.mesosphere.com/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
-# TODO pin version
 RUN yum install -y \
   mesos-0.23.0-1.0.centos701406 \
   marathon-0.9.1-1.0.397.el7.x86_64
 
 EXPOSE 8080
 
-CMD ["marathon"]
+ENTRYPOINT ["marathon"]

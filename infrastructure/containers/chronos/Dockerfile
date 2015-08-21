@@ -10,4 +10,4 @@ RUN yum install -y \
 COPY cmd.sh /tmp/
 EXPOSE 4400
 
-CMD ["/tmp/cmd.sh"]
+ENTRYPOINT ["/tmp/cmd.sh"]

@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file, following [
 - re-organize directories
 - improve `build_component` with proper context and tags
 - split scripts into single-purpose ones
+- containers provisioning on master
 
 ---
 
