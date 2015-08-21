@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "digitalocean_api_token": "{{env `DIGITALOCEAN_API_TOKEN`}}",
+    "digitalocean_region": "{{env `DIGITALOCEAN_REGION`}}",
+    "digitalocean_size": "{{env `DIGITALOCEAN_SIZE`}}",
+    "digitalocean_image": "docker",
+    "zk_version": "3.4.6",
+    "mesos_master_version": "cloud",
+    "marathon_version": "cloud",
+    "chronos_version": "cloud"
+  },
+  "builders": [
+    {
+      "type": "digitalocean",
+      "snapshot_name": "mesos-master-{{user `digitalocean_image`}}-{{ timestamp }}",
+      "api_token": "{{ user `digitalocean_api_token` }}",
+      "image": "{{user `digitalocean_image`}}",
+      "region": "{{user `digitalocean_region`}}",
+      "size": "{{user `digitalocean_size`}}",
+      "ssh_timeout": "10m"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "environment_vars": [
+        "ZK_VERSION={{user `zk_version`}}",
+        "MESOS_MASTER_VERSION={{user `mesos_master_version`}}",
+        "MARATHON_VERSION={{user `marathon_version`}}",
+        "CHRONOS_VERSION={{user `chronos_version`}}"
+      ],
+      "scripts": [
+        "scripts/init-master.sh"
+      ]
+    }
+  ]
+}

@@ -1,1 +1,10 @@
+# local temporary hacks
+_*
+
+# secrets
 .env
+
+# terraform
+*.tfvars
+*.tfstate
+*.tfstate.backup

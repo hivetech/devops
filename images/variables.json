@@ -1,8 +1,0 @@
-{
-  "consul_version": "",
-  "weave_version": "",
-  "mesos_version": "",
-  "marathon_version": "",
-  "chronos_version": "",
-  "docker_version": ""
-}

@@ -71,8 +71,9 @@ component_ip () {
 build_component () {
   local namespace=$1
   local name=$2
-  log "\t--> building ${namespace}/${name}"
-  docker build --rm -t ${namespace}/${name} -f ${name}.Dockerfile .
+  local tag="${3:-latest}"
+  log "building ${namespace}/${name}:${tag} ..."
+  docker build --rm -t ${namespace}/${name}:${tag} infrastructure/containers/${name}
 }
 
 remove_component () {
