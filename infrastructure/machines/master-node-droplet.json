@@ -5,9 +5,8 @@
     "digitalocean_size": "{{env `DIGITALOCEAN_SIZE`}}",
     "digitalocean_image": "docker",
     "zk_version": "3.4.6",
-    "mesos_master_version": "cloud",
-    "marathon_version": "cloud",
-    "chronos_version": "cloud"
+    "mesos_master_version": "develop",
+    "marathon_version": "develop"
   },
   "builders": [
     {
@@ -26,8 +25,7 @@
       "environment_vars": [
         "ZK_VERSION={{user `zk_version`}}",
         "MESOS_MASTER_VERSION={{user `mesos_master_version`}}",
-        "MARATHON_VERSION={{user `marathon_version`}}",
-        "CHRONOS_VERSION={{user `chronos_version`}}"
+        "MARATHON_VERSION={{user `marathon_version`}}"
       ],
       "scripts": [
         "scripts/init-master.sh"
