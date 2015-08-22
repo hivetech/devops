@@ -7,6 +7,15 @@
 - Early release, I don't fully understand Graylog just yet
 - Speaking of that, sending logs to the host port mapped to Gralog server doesn't work
 
+_Please use the configured REST transport address (http://172.17.0.71:12900) if you want working examples. This connection to http://192.168.99.100:12900 will cause problems with Access-Control-Allow-Origin._
+
+- It would be nice to leverage server API to automatically create an UDP GELF input
+
+```sh
+GRAYLOG_HOST=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' graylog_graylog_1)
+curl -XPOST ${GRAYLOG_HOST}:12900/system/inputs -d '{"type": "GELF UDP", "title": "docker", "global": true}'
+```
+
 ## Usage
 
 __Requirements__

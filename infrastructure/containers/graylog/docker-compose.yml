@@ -12,8 +12,7 @@ mongo:
     - 27017:27017
 
 graylog:
-  dockerfile: server.Dockerfile
-  build: .
+  build: ./server
   links:
     - elasticsearch:es
     - mongo
@@ -25,8 +24,7 @@ graylog:
     - ES_NODE_NAME=graylog
 
 graylog-web:
-  dockerfile: web.Dockerfile
-  build: .
+  build: ./web
   links:
     - graylog
   ports:
