@@ -1,10 +1,12 @@
 # Mesos Deployment Prototype
 
-| container             | status        |
-| --------------------- |:-------------:|
-| hivetech/mesos.master | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/mesos.master/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/mesos.master) |
-| hivetech/marathon     | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/marathon/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/marathon) |
-| hivetech/chronos      | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/chronos/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/chronos) |
+| container               | status        |
+| ----------------------- |:-------------:|
+| hivetech/mesos.master   | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/mesos.master/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/mesos.master) |
+| hivetech/marathon       | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/marathon/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/marathon) |
+| hivetech/chronos        | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/chronos/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/chronos) |
+| hivetech/graylog.server | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/graylog.server/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/graylog.server) |
+| hivetech/graylog.web    | [![Docker Repository on Quay.io](https://quay.io/repository/hackliff/graylog.web/status "Docker Repository on Quay.io")](https://quay.io/repository/hackliff/graylog.web) |
 
 
 ## Credits
