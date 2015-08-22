@@ -1,0 +1,33 @@
+# https://hub.docker.com/_/elasticsearch/
+elasticsearch:
+  image: elasticsearch:1.7.1
+  ports:
+    - 9200:9200
+    - 9300:9300
+  command: elasticsearch -Des.cluster.name=graylog
+
+mongo:
+  image: mongo:3.0.5
+  ports:
+    - 27017:27017
+
+graylog:
+  dockerfile: server.Dockerfile
+  build: .
+  links:
+    - elasticsearch:es
+    - mongo
+  ports:
+    - 12201:12201
+    - 12900:12900
+  environment:
+    - GRAYLOG_PASS=admin
+    - ES_NODE_NAME=graylog
+
+graylog-web:
+  dockerfile: web.Dockerfile
+  build: .
+  links:
+    - graylog
+  ports:
+    - 9000:9000
